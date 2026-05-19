@@ -39,7 +39,8 @@ function AindaExisteLuz() {
             Mesmo nos dias mais escuros,
             ainda existe esperança.
 
-            <br /><br />
+            <br />
+            <br />
 
             Uma canção sobre fé,
             recomeço e a luz que nunca
@@ -56,6 +57,50 @@ function AindaExisteLuz() {
 
             Ouvir Agora
           </a>
+
+          <div className="spotify-embed">
+
+            <iframe
+              data-testid="embed-iframe"
+
+              style={{
+                borderRadius: "12px",
+              }}
+
+              src="https://open.spotify.com/embed/album/6rgQFKTBN9oNn5oJ4IQsvQ?utm_source=generator"
+
+              width="100%"
+
+              height="352"
+
+              frameBorder="0"
+
+              allowFullScreen=""
+
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+
+              loading="lazy"
+            ></iframe>
+
+          </div>
+
+          <div className="album-navigation">
+
+            <Link
+              to="/voz-no-silencio"
+              className="nav-album-button"
+            >
+              ← Álbum Anterior
+            </Link>
+
+            <Link
+              to="/depois-da-tempestade"
+              className="nav-album-button"
+            >
+              Próximo Álbum →
+            </Link>
+
+          </div>
 
         </div>
 
