@@ -277,6 +277,58 @@ const heroY =
         ></iframe>
       </motion.section>
 
+<motion.section
+  className="about-section"
+
+  initial={{
+    opacity: 0,
+    y: 80,
+  }}
+
+  whileInView={{
+    opacity: 1,
+    y: 0,
+  }}
+
+  transition={{
+    duration: 1,
+  }}
+
+  viewport={{ once: true }}
+>
+
+  <div className="about-card">
+
+    <h2 className="about-title">
+      Sobre o Projeto ✨
+    </h2>
+
+    <p className="about-text">
+      Ponto de Luz Oficial nasceu
+      para transformar silêncio em
+      esperança através da música.
+
+      <br /><br />
+
+      Cada canção carrega emoção,
+      fé, dor, cura e luz,
+      conectando almas através de
+      melodias que acolhem,
+      inspiram e iluminam.
+
+      <br /><br />
+
+      Mais do que músicas,
+      este projeto é um refúgio
+      para quem busca força,
+      paz e esperança em meio
+      à escuridão.
+    </p>
+
+  </div>
+
+</motion.section>
+
       <div
         id="albuns"
         className="album-grid"
