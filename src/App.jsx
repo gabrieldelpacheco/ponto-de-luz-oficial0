@@ -198,6 +198,7 @@ function App() {
         />
 
         <div className="hero-overlay">
+          <div className="hero-glow"></div>
           <h1 className="title">
             Ponto de Luz Oficial
           </h1>
