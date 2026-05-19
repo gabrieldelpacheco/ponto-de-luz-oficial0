@@ -7,11 +7,34 @@ import {
   Link,
 } from "react-router-dom";
 
+import { motion } from "framer-motion";
+
 import depoisDaTempestade from "../assets/depois-da-tempestade.png";
 
 function DepoisDaTempestade() {
   return (
-    <div className="album-page">
+    <motion.div
+      className="album-page"
+
+      initial={{
+        opacity: 0,
+        y: 40,
+      }}
+
+      animate={{
+        opacity: 1,
+        y: 0,
+      }}
+
+      exit={{
+        opacity: 0,
+        y: -40,
+      }}
+
+      transition={{
+        duration: 0.7,
+      }}
+    >
 
       <div className="album-hero">
 
@@ -99,7 +122,7 @@ function DepoisDaTempestade() {
 
       </div>
 
-    </div>
+    </motion.div>
   );
 }
 

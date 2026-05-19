@@ -23,6 +23,40 @@ import {
 import { Link } from "react-router-dom";
 
 function App() {
+
+    const [mousePosition, setMousePosition] =
+    useState({
+      x: 0,
+      y: 0,
+    });
+
+  useEffect(() => {
+
+    const updateMouse = (e) => {
+
+      setMousePosition({
+        x: e.clientX,
+        y: e.clientY,
+      });
+
+    };
+
+    window.addEventListener(
+      "mousemove",
+      updateMouse
+    );
+
+    return () => {
+
+      window.removeEventListener(
+        "mousemove",
+        updateMouse
+      );
+
+    };
+
+  }, []);
+
   const [menuOpen, setMenuOpen] =
     useState(false);
 
@@ -30,13 +64,16 @@ function App() {
     useState(false);
 
   const scrollToSection = (id) => {
+
     const element =
       document.querySelector(id);
 
     if (element) {
+
       element.scrollIntoView({
         behavior: "smooth",
       });
+
     }
   };
 
@@ -49,6 +86,7 @@ function App() {
   );
 
   useEffect(() => {
+
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
@@ -59,14 +97,18 @@ function App() {
     );
 
     return () => {
+
       window.removeEventListener(
         "scroll",
         handleScroll
       );
+
     };
+
   }, []);
 
   const albums = [
+
     {
       title: "Voz no Silêncio",
       image: vozNoSilencio,
@@ -81,9 +123,11 @@ function App() {
       title: "Depois da Tempestade",
       image: depoisDaTempestade,
     },
+
   ];
 
   return (
+
     <motion.div
       className="page"
 
@@ -95,14 +139,21 @@ function App() {
         opacity: 1,
       }}
 
-      exit={{
-        opacity: 0,
-      }}
-
       transition={{
         duration: 0.8,
       }}
     >
+
+        <div
+    className="custom-cursor"
+
+    style={{
+      left: mousePosition.x,
+      top: mousePosition.y,
+    }}
+  ></div>
+
+      {/* NAVBAR */}
 
       <nav
         className={
@@ -111,21 +162,24 @@ function App() {
             : "navbar"
         }
       >
+
         <div className="logo">
           Ponto de Luz Oficial
         </div>
 
         <div
           className="menu-icon"
+
           onClick={() =>
             setMenuOpen(!menuOpen)
           }
         >
-          {menuOpen ? (
-            <FaTimes />
-          ) : (
-            <FaBars />
-          )}
+
+          {menuOpen
+            ? <FaTimes />
+            : <FaBars />
+          }
+
         </div>
 
         <div
@@ -135,16 +189,20 @@ function App() {
               : "nav-container"
           }
         >
+
           <div className="nav-links">
 
             <a
               href="#"
+
               onClick={(e) => {
+
                 e.preventDefault();
 
                 scrollToSection(
                   "#inicio"
                 );
+
               }}
             >
               Início
@@ -152,12 +210,15 @@ function App() {
 
             <a
               href="#"
+
               onClick={(e) => {
+
                 e.preventDefault();
 
                 scrollToSection(
                   "#albuns"
                 );
+
               }}
             >
               Álbuns
@@ -165,12 +226,15 @@ function App() {
 
             <a
               href="#"
+
               onClick={(e) => {
+
                 e.preventDefault();
 
                 scrollToSection(
                   "#contato"
                 );
+
               }}
             >
               Contato
@@ -205,16 +269,22 @@ function App() {
             </a>
 
           </div>
+
         </div>
+
       </nav>
+
+      {/* HERO */}
 
       <div
         id="inicio"
         className="hero"
       >
+
         <motion.img
           src={heroImage}
           alt="Hero"
+
           className="hero-image"
 
           style={{
@@ -223,10 +293,9 @@ function App() {
         />
 
         <div className="hero-overlay">
-
-          <div className="hero-glow"></div>
-
+<div className="aurora"></div>
           <div className="particles">
+
             <span></span>
             <span></span>
             <span></span>
@@ -235,6 +304,7 @@ function App() {
             <span></span>
             <span></span>
             <span></span>
+
           </div>
 
           <h1 className="title">
@@ -250,7 +320,10 @@ function App() {
           </p>
 
         </div>
+
       </div>
+
+      {/* SPOTIFY */}
 
       <motion.section
         className="spotify-section"
@@ -269,7 +342,9 @@ function App() {
           duration: 1,
         }}
 
-        viewport={{ once: true }}
+        viewport={{
+          once: true,
+        }}
       >
 
         <h2 className="spotify-title">
@@ -278,8 +353,7 @@ function App() {
 
         <p className="spotify-text">
           Escute os lançamentos
-          oficiais do Ponto de Luz
-          Oficial
+          oficiais do Ponto de Luz Oficial
         </p>
 
         <iframe
@@ -306,6 +380,8 @@ function App() {
 
       </motion.section>
 
+      {/* SOBRE */}
+
       <motion.section
         className="about-section"
 
@@ -323,7 +399,9 @@ function App() {
           duration: 1,
         }}
 
-        viewport={{ once: true }}
+        viewport={{
+          once: true,
+        }}
       >
 
         <div className="about-card">
@@ -333,6 +411,7 @@ function App() {
           </h2>
 
           <p className="about-text">
+
             Ponto de Luz Oficial nasceu
             para transformar silêncio em
             esperança através da música.
@@ -354,11 +433,14 @@ function App() {
             para quem busca força,
             paz e esperança em meio
             à escuridão.
+
           </p>
 
         </div>
 
       </motion.section>
+
+      {/* ÁLBUNS */}
 
       <div
         id="albuns"
@@ -385,8 +467,7 @@ function App() {
 
               transition={{
                 duration: 0.8,
-                delay:
-                  index * 0.2,
+                delay: index * 0.2,
               }}
 
               viewport={{
@@ -397,6 +478,7 @@ function App() {
               <img
                 src={album.image}
                 alt={album.title}
+
                 className="album-image"
               />
 
@@ -419,10 +501,13 @@ function App() {
               </Link>
 
             </motion.div>
+
           )
         )}
 
       </div>
+
+      {/* FOOTER */}
 
       <motion.footer
         className="footer"
@@ -442,7 +527,9 @@ function App() {
           duration: 1,
         }}
 
-        viewport={{ once: true }}
+        viewport={{
+          once: true,
+        }}
       >
 
         <h2>
@@ -453,72 +540,69 @@ function App() {
           Uma voz, uma mensagem,
           um ponto de luz ✨
         </p>
+<div className="contact-grid">
 
-        <div className="contact-grid">
+  <a
+    href="https://open.spotify.com/artist/69NroCfrP8Nm9CWMXVOHuc"
+    target="_blank"
+    rel="noreferrer"
+    className="contact-card"
+  >
+    <FaSpotify size={40} />
 
-          <a
-            href="https://open.spotify.com/artist/69NroCfrP8Nm9CWMXVOHuc"
-            target="_blank"
-            rel="noreferrer"
-            className="contact-card"
-          >
-            <FaSpotify size={40} />
+    <h3>Spotify</h3>
 
-            <h3>Spotify</h3>
+    <p>
+      Ouça os lançamentos oficiais
+    </p>
+  </a>
 
-            <p>
-              Ouça os lançamentos
-              oficiais
-            </p>
-          </a>
+  <a
+    href="https://www.instagram.com/pontodeluzoficial0/"
+    target="_blank"
+    rel="noreferrer"
+    className="contact-card"
+  >
+    <FaInstagram size={40} />
 
-          <a
-            href="https://www.instagram.com/pontodeluzoficial0/"
-            target="_blank"
-            rel="noreferrer"
-            className="contact-card"
-          >
-            <FaInstagram size={40} />
+    <h3>Instagram</h3>
 
-            <h3>Instagram</h3>
+    <p>
+      Acompanhe novidades
+      e conteúdos
+    </p>
+  </a>
 
-            <p>
-              Acompanhe novidades
-              e conteúdos
-            </p>
-          </a>
+  <a
+    href="https://facebook.com/pontodeluzoficial"
+    target="_blank"
+    rel="noreferrer"
+    className="contact-card"
+  >
+    <FaFacebook size={40} />
 
-          <a
-            href="https://facebook.com/pontodeluzoficial"
-            target="_blank"
-            rel="noreferrer"
-            className="contact-card"
-          >
-            <FaFacebook size={40} />
+    <h3>Facebook</h3>
 
-            <h3>Facebook</h3>
+    <p>
+      Conecte-se com o projeto
+    </p>
+  </a>
 
-            <p>
-              Conecte-se com o projeto
-            </p>
-          </a>
+  <a
+    href="mailto:pontodeluzoficial0@gmail.com"
+    className="contact-card"
+  >
+    <FaEnvelope size={40} />
 
-          <a
-            href="mailto:pontodeluzoficial0@gmail.com"
-            className="contact-card"
-          >
-            <FaEnvelope size={40} />
+    <h3>Email</h3>
 
-            <h3>Email</h3>
+    <p>
+      Entre em contato
+      profissionalmente
+    </p>
+  </a>
 
-            <p>
-              Entre em contato
-              profissionalmente
-            </p>
-          </a>
-
-        </div>
-
+</div>
         <span>
           © 2026 Ponto de Luz Oficial
         </span>
@@ -526,6 +610,7 @@ function App() {
       </motion.footer>
 
     </motion.div>
+
   );
 }
 

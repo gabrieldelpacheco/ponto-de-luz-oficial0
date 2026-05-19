@@ -1,8 +1,11 @@
 import { StrictMode } from "react";
 
+import { AnimatePresence } from "framer-motion";
+
 import { createRoot } from "react-dom/client";
 
-//Importação de rotas//
+// IMPORTAÇÃO DE ROTAS
+
 import VozNoSilencio from "./pages/VozNoSilencio";
 import AindaExisteLuz from "./pages/AindaExisteLuz";
 import DepoisDaTempestade from "./pages/DepoisDaTempestade";
@@ -20,32 +23,41 @@ import App from "./App.jsx";
 createRoot(
   document.getElementById("root")
 ).render(
+
   <StrictMode>
+
     <HashRouter>
 
-      <Routes>
+      <AnimatePresence mode="wait">
 
-        <Route
-          path="/"
-          element={<App />}
-        />
+        <Routes>
 
-  <Route
-    path="/voz-no-silencio"
-    element={<VozNoSilencio />}
-  />
-  <Route
-    path="/ainda-existe-luz"
-    element={<AindaExisteLuz />}
-  />
-  <Route
-    path="/depois-da-tempestade"
-    element={<DepoisDaTempestade />}
-  />
+          <Route
+            path="/"
+            element={<App />}
+          />
 
-      </Routes>
-      
+          <Route
+            path="/voz-no-silencio"
+            element={<VozNoSilencio />}
+          />
+
+          <Route
+            path="/ainda-existe-luz"
+            element={<AindaExisteLuz />}
+          />
+
+          <Route
+            path="/depois-da-tempestade"
+            element={<DepoisDaTempestade />}
+          />
+
+        </Routes>
+
+      </AnimatePresence>
 
     </HashRouter>
+
   </StrictMode>
+
 );
