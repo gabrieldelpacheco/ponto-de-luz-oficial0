@@ -4,6 +4,7 @@ import vozNoSilencio from "./assets/voz-no-silencio.png";
 import aindaExisteLuz from "./assets/ainda-existe-luz.png";
 import depoisDaTempestade from "./assets/depois-da-tempestade.png";
 import heroImage from "./assets/hero-1.png";
+import { Link } from "react-router-dom";
 
 import {
   FaSpotify,
@@ -19,8 +20,6 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
-
-import Lenis from "@studio-freight/lenis";
 
 function App() {
   const [menuOpen, setMenuOpen] =
@@ -75,19 +74,6 @@ window.addEventListener(
   "mousemove",
   moveCursor
 );
-
-    const lenis = new Lenis({
-      duration: 2,
-      smoothWheel: true,
-    });
-
-    function raf(time) {
-      lenis.raf(time);
-
-      requestAnimationFrame(raf);
-    }
-
-    requestAnimationFrame(raf);
 
     return () => {
       window.removeEventListener(
@@ -408,14 +394,19 @@ window.addEventListener(
                 {album.title}
               </h2>
 
-              <a
-                href={album.link}
-                target="_blank"
-                rel="noreferrer"
-                className="button"
-              >
-                Ouvir Agora
-              </a>
+<Link
+ to={
+  index === 0
+    ? "/voz-no-silencio"
+    : index === 1
+    ? "/ainda-existe-luz"
+    : "/depois-da-tempestade"
+}
+
+  className="button"
+>
+  Explorar
+</Link>
             </motion.div>
           )
         )}
