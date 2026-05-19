@@ -10,6 +10,7 @@ import {
   FaFacebook,
   FaBars,
   FaTimes,
+  FaEnvelope,
 } from "react-icons/fa";
 import {
   motion,
@@ -417,31 +418,65 @@ const heroY =
           um ponto de luz ✨
         </p>
 
-        <div className="footer-socials">
-          <a
-            href="https://open.spotify.com/artist/69NroCfrP8Nm9CWMXVOHuc"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <FaSpotify size={24} />
-          </a>
+        <div className="contact-grid">
 
-          <a
-            href="https://www.instagram.com/pontodeluzoficial0/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <FaInstagram size={24} />
-          </a>
+  <a
+    href="https://open.spotify.com/artist/69NroCfrP8Nm9CWMXVOHuc"
+    target="_blank"
+    rel="noreferrer"
+    className="contact-card"
+  >
+    <FaSpotify size={40} />
 
-          <a
-            href="https://facebook.com/pontodeluzoficial"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <FaFacebook size={24} />
-          </a>
-        </div>
+    <h3>Spotify</h3>
+
+    <p>
+      Ouça os lançamentos oficiais
+    </p>
+  </a>
+
+  <a
+    href="https://www.instagram.com/pontodeluzoficial0/"
+    target="_blank"
+    rel="noreferrer"
+    className="contact-card"
+  >
+    <FaInstagram size={40} />
+
+    <h3>Instagram</h3>
+
+    <p>
+      Acompanhe novidades e conteúdos
+    </p>
+  </a>
+
+  <a
+    href="https://facebook.com/pontodeluzoficial"
+    target="_blank"
+    rel="noreferrer"
+    className="contact-card"
+  >
+    <FaFacebook size={40} />
+
+    <h3>Facebook</h3>
+
+    <p>
+      Conecte-se com o projeto
+    </p>
+  </a>
+<a
+  href="mailto:pontodeluzoficial0@gmail.com"
+  className="contact-card"
+>
+  <FaEnvelope size={40} />
+
+  <h3>Email</h3>
+
+  <p>
+    Entre em contato profissionalmente
+  </p>
+</a>
+</div>
 
         <span>
           © 2026 Ponto de Luz
