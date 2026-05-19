@@ -4,6 +4,7 @@ import vozNoSilencio from "./assets/voz-no-silencio.png";
 import aindaExisteLuz from "./assets/ainda-existe-luz.png";
 import depoisDaTempestade from "./assets/depois-da-tempestade.png";
 import heroImage from "./assets/hero-1.png";
+
 import {
   FaSpotify,
   FaInstagram,
@@ -12,6 +13,7 @@ import {
   FaTimes,
   FaEnvelope,
 } from "react-icons/fa";
+
 import {
   motion,
   useScroll,
@@ -21,18 +23,17 @@ import {
 import Lenis from "@studio-freight/lenis";
 
 function App() {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] =
+    useState(false);
 
   const [scrolled, setScrolled] =
     useState(false);
-  const { scrollY } = useScroll();
 
-const heroY =
-  useTransform(
-    scrollY,
-    [0, 500],
-    [0, 150]
-  );
+    const [mousePosition, setMousePosition] =
+  useState({
+    x: 0,
+    y: 0,
+  });
 
   const scrollToSection = (id) => {
     const element =
@@ -45,6 +46,14 @@ const heroY =
     }
   };
 
+  const { scrollY } = useScroll();
+
+  const heroY = useTransform(
+    scrollY,
+    [0, 500],
+    [0, 150]
+  );
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
@@ -54,6 +63,18 @@ const heroY =
       "scroll",
       handleScroll
     );
+
+    const moveCursor = (e) => {
+  setMousePosition({
+    x: e.clientX,
+    y: e.clientY,
+  });
+};
+
+window.addEventListener(
+  "mousemove",
+  moveCursor
+);
 
     const lenis = new Lenis({
       duration: 2,
@@ -73,6 +94,10 @@ const heroY =
         "scroll",
         handleScroll
       );
+      window.removeEventListener(
+  "mousemove",
+  moveCursor
+);
     };
   }, []);
 
@@ -98,6 +123,14 @@ const heroY =
 
   return (
     <div className="page">
+      <div
+  className="cursor-light"
+
+  style={{
+    left: `${mousePosition.x}px`,
+    top: `${mousePosition.y}px`,
+  }}
+></div>
       <nav
         className={
           scrolled
@@ -202,28 +235,29 @@ const heroY =
         id="inicio"
         className="hero"
       >
-<motion.img
-  src={heroImage}
-  alt="Hero"
-  className="hero-image"
-
-  style={{
-    y: heroY,
-  }}
-/>
+        <motion.img
+          src={heroImage}
+          alt="Hero"
+          className="hero-image"
+          style={{
+            y: heroY,
+          }}
+        />
 
         <div className="hero-overlay">
           <div className="hero-glow"></div>
+
           <div className="particles">
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-</div>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+
           <h1 className="title">
             Ponto de Luz Oficial
           </h1>
@@ -278,57 +312,51 @@ const heroY =
         ></iframe>
       </motion.section>
 
-<motion.section
-  className="about-section"
+      <motion.section
+        className="about-section"
+        initial={{
+          opacity: 0,
+          y: 80,
+        }}
+        whileInView={{
+          opacity: 1,
+          y: 0,
+        }}
+        transition={{
+          duration: 1,
+        }}
+        viewport={{ once: true }}
+      >
+        <div className="about-card">
+          <h2 className="about-title">
+            Sobre o Projeto ✨
+          </h2>
 
-  initial={{
-    opacity: 0,
-    y: 80,
-  }}
+          <p className="about-text">
+            Ponto de Luz Oficial nasceu
+            para transformar silêncio em
+            esperança através da música.
 
-  whileInView={{
-    opacity: 1,
-    y: 0,
-  }}
+            <br />
+            <br />
 
-  transition={{
-    duration: 1,
-  }}
+            Cada canção carrega emoção,
+            fé, dor, cura e luz,
+            conectando almas através de
+            melodias que acolhem,
+            inspiram e iluminam.
 
-  viewport={{ once: true }}
->
+            <br />
+            <br />
 
-  <div className="about-card">
-
-    <h2 className="about-title">
-      Sobre o Projeto ✨
-    </h2>
-
-    <p className="about-text">
-      Ponto de Luz Oficial nasceu
-      para transformar silêncio em
-      esperança através da música.
-
-      <br /><br />
-
-      Cada canção carrega emoção,
-      fé, dor, cura e luz,
-      conectando almas através de
-      melodias que acolhem,
-      inspiram e iluminam.
-
-      <br /><br />
-
-      Mais do que músicas,
-      este projeto é um refúgio
-      para quem busca força,
-      paz e esperança em meio
-      à escuridão.
-    </p>
-
-  </div>
-
-</motion.section>
+            Mais do que músicas,
+            este projeto é um refúgio
+            para quem busca força,
+            paz e esperança em meio
+            à escuridão.
+          </p>
+        </div>
+      </motion.section>
 
       <div
         id="albuns"
@@ -419,68 +447,70 @@ const heroY =
         </p>
 
         <div className="contact-grid">
+          <a
+            href="https://open.spotify.com/artist/69NroCfrP8Nm9CWMXVOHuc"
+            target="_blank"
+            rel="noreferrer"
+            className="contact-card"
+          >
+            <FaSpotify size={40} />
 
-  <a
-    href="https://open.spotify.com/artist/69NroCfrP8Nm9CWMXVOHuc"
-    target="_blank"
-    rel="noreferrer"
-    className="contact-card"
-  >
-    <FaSpotify size={40} />
+            <h3>Spotify</h3>
 
-    <h3>Spotify</h3>
+            <p>
+              Ouça os lançamentos
+              oficiais
+            </p>
+          </a>
 
-    <p>
-      Ouça os lançamentos oficiais
-    </p>
-  </a>
+          <a
+            href="https://www.instagram.com/pontodeluzoficial0/"
+            target="_blank"
+            rel="noreferrer"
+            className="contact-card"
+          >
+            <FaInstagram size={40} />
 
-  <a
-    href="https://www.instagram.com/pontodeluzoficial0/"
-    target="_blank"
-    rel="noreferrer"
-    className="contact-card"
-  >
-    <FaInstagram size={40} />
+            <h3>Instagram</h3>
 
-    <h3>Instagram</h3>
+            <p>
+              Acompanhe novidades
+              e conteúdos
+            </p>
+          </a>
 
-    <p>
-      Acompanhe novidades e conteúdos
-    </p>
-  </a>
+          <a
+            href="https://facebook.com/pontodeluzoficial"
+            target="_blank"
+            rel="noreferrer"
+            className="contact-card"
+          >
+            <FaFacebook size={40} />
 
-  <a
-    href="https://facebook.com/pontodeluzoficial"
-    target="_blank"
-    rel="noreferrer"
-    className="contact-card"
-  >
-    <FaFacebook size={40} />
+            <h3>Facebook</h3>
 
-    <h3>Facebook</h3>
+            <p>
+              Conecte-se com o projeto
+            </p>
+          </a>
 
-    <p>
-      Conecte-se com o projeto
-    </p>
-  </a>
-<a
-  href="mailto:pontodeluzoficial0@gmail.com"
-  className="contact-card"
->
-  <FaEnvelope size={40} />
+          <a
+            href="mailto:pontodeluzoficial0@gmail.com"
+            className="contact-card"
+          >
+            <FaEnvelope size={40} />
 
-  <h3>Email</h3>
+            <h3>Email</h3>
 
-  <p>
-    Entre em contato profissionalmente
-  </p>
-</a>
-</div>
+            <p>
+              Entre em contato
+              profissionalmente
+            </p>
+          </a>
+        </div>
 
         <span>
-          © 2026 Ponto de Luz
-          Oficial
+          © 2026 Ponto de Luz Oficial
         </span>
       </motion.footer>
     </div>
