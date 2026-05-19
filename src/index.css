@@ -1,8 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -13,18 +18,31 @@ body {
 
 .page {
   min-height: 100vh;
-  background: linear-gradient(to bottom, #000000, #1a1200, #3d2a00);
+
+  background:
+    linear-gradient(
+      to bottom,
+      #000000,
+      #1a1200,
+      #3d2a00
+    );
 }
+
+/* HERO */
 
 .hero {
   position: relative;
+
   height: 85vh;
+
   overflow: hidden;
+
   width: 100%;
 }
 
 .hero-image {
   width: 100vw;
+
   height: 100%;
 
   object-fit: cover;
@@ -36,14 +54,17 @@ body {
 
 .hero-overlay {
   position: absolute;
+
   inset: 0;
 
   background: rgba(0, 0, 0, 0.35);
 
   display: flex;
+
   flex-direction: column;
 
   justify-content: center;
+
   align-items: center;
 
   text-align: center;
@@ -87,6 +108,94 @@ body {
   font-style: italic;
 }
 
+/* NAVBAR */
+
+.navbar {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+
+  padding: 20px 50px;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  background: rgba(0, 0, 0, 0.3);
+
+  backdrop-filter: blur(10px);
+
+  z-index: 1000;
+
+  transition:
+    background 0.4s ease,
+    padding 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.navbar-scrolled {
+  background: rgba(0,0,0,0.85);
+
+  box-shadow:
+    0 0 20px rgba(0,0,0,0.5);
+
+  backdrop-filter: blur(12px);
+}
+
+.logo {
+  color: #ffd700;
+
+  font-size: 1.4rem;
+
+  font-weight: bold;
+}
+
+.nav-container {
+  display: flex;
+
+  align-items: center;
+
+  gap: 40px;
+}
+
+.nav-links,
+.social-links {
+  display: flex;
+
+  gap: 25px;
+}
+
+.nav-links a,
+.social-links a {
+  color: white;
+
+  text-decoration: none;
+
+  transition: 0.3s;
+}
+
+.nav-links a:hover,
+.social-links a:hover {
+  color: #ffd700;
+}
+
+.menu-icon {
+  display: none;
+
+  font-size: 2rem;
+
+  color: #ffd700;
+
+  cursor: pointer;
+}
+
+/* ALBUMS */
+
 .album-grid {
   display: grid;
 
@@ -124,12 +233,15 @@ body {
 
 .album-image {
   width: 100%;
+
   height: 320px;
+
   object-fit: cover;
 }
 
 .album-title {
   margin-top: 20px;
+
   font-size: 1.8rem;
 }
 
@@ -157,97 +269,7 @@ body {
   transform: scale(1.05);
 }
 
-@media (max-width: 768px) {
-  .hero {
-    height: 70vh;
-  }
-
-  .title {
-    font-size: 2.2rem;
-  }
-
-  .subtitle {
-    font-size: 1rem;
-  }
-
-  .album-grid {
-    padding: 40px 20px;
-  }
-
-  .album-title {
-    font-size: 1.5rem;
-  }
-}
-
-.navbar {
-  position: fixed;
-
-  top: 0;
-  left: 0;
-
-  width: 100%;
-
-  padding: 20px 50px;
-
-  display: flex;
-
-  justify-content: space-between;
-
-  align-items: center;
-
-  background: rgba(0, 0, 0, 0.3);
-
-  backdrop-filter: blur(10px);
-
-  z-index: 1000;
-}
-
-.logo {
-  color: #ffd700;
-
-  font-size: 1.4rem;
-
-  font-weight: bold;
-}
-
-.nav-links,
-.social-links {
-  display: flex;
-  gap: 25px;
-}
-
-.nav-links a,
-.social-links a {
-  color: white;
-
-  text-decoration: none;
-
-  transition: 0.3s;
-}
-
-.nav-links a:hover,
-.social-links a:hover {
-  color: #ffd700;
-}
-
-@media (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-
-    gap: 15px;
-
-    padding: 20px;
-  }
-
-  .nav-links,
-  .social-links {
-    gap: 15px;
-  }
-
-  .logo {
-    text-align: center;
-  }
-}
+/* FOOTER */
 
 .footer {
   margin-top: 80px;
@@ -309,18 +331,75 @@ body {
   font-size: 0.9rem;
 }
 
-.navbar {
-  transition:
-    background 0.4s ease,
-    padding 0.4s ease,
-    box-shadow 0.4s ease;
-}
+/* RESPONSIVO */
 
-.navbar-scrolled {
-  background: rgba(0,0,0,0.85);
+@media (max-width: 768px) {
 
-  box-shadow:
-    0 0 20px rgba(0,0,0,0.5);
+  .hero {
+    height: 70vh;
+  }
 
-  backdrop-filter: blur(12px);
+  .navbar {
+    padding: 20px;
+  }
+
+  .menu-icon {
+    display: block;
+  }
+
+  .nav-container {
+    position: absolute;
+
+    top: 100%;
+
+    left: 0;
+
+    width: 100%;
+
+    background: rgba(0,0,0,0.96);
+
+    flex-direction: column;
+
+    align-items: center;
+
+    padding: 30px 0;
+
+    gap: 25px;
+
+    transform: translateY(-200%);
+
+    transition: 0.4s ease;
+  }
+
+  .nav-container.active {
+    transform: translateY(0);
+  }
+
+  .nav-links {
+    flex-direction: column;
+
+    align-items: center;
+  }
+
+  .social-links {
+    justify-content: center;
+  }
+
+  .title {
+    font-size: 2.3rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+
+    line-height: 1.6;
+  }
+
+  .album-grid {
+    padding: 40px 20px;
+  }
+
+  .album-title {
+    font-size: 1.5rem;
+  }
 }

@@ -7,11 +7,13 @@ import {
   FaSpotify,
   FaInstagram,
   FaFacebook,
+  FaBars,
+  FaTimes,
 } from "react-icons/fa";
 import Lenis from "@studio-freight/lenis";
 
-
 function App() {
+  const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const scrollToSection = (id) => {
   const element = document.querySelector(id);
@@ -72,71 +74,82 @@ useEffect(() => {
 
   return (
     <div className="page">
-      <nav
-  className={
-    scrolled
-      ? "navbar navbar-scrolled"
-      : "navbar"
-  }
->
+      <nav className="navbar">
   <div className="logo">
     Ponto de Luz Oficial
   </div>
 
-  <div className="nav-links">
-    <a
-  href="#"
-  onClick={(e) => {
-    e.preventDefault();
-    scrollToSection("#inicio");
-  }}
->
-  Início
-</a>
-    <a
-  href="#"
-  onClick={(e) => {
-    e.preventDefault();
-    scrollToSection("#albuns");
-  }}
->
-  Álbuns
-</a>
-    <a
-  href="#"
-  onClick={(e) => {
-    e.preventDefault();
-    scrollToSection("#contato");
-  }}
->
-  Contato
-</a>
+  <div
+    className="menu-icon"
+    onClick={() => setMenuOpen(!menuOpen)}
+  >
+    {menuOpen ? <FaTimes /> : <FaBars />}
   </div>
 
-  <div className="social-links">
-<a
-  href="https://open.spotify.com/artist/69NroCfrP8Nm9CWMXVOHuc"
-  target="_blank"
-  rel="noreferrer"
->
-  <FaSpotify size={28} />
-</a>
+  <div
+    className={
+      menuOpen
+        ? "nav-container active"
+        : "nav-container"
+    }
+  >
+    <div className="nav-links">
+      <a
+        href="#"
+        onClick={(e) => {
+          e.preventDefault();
+          scrollToSection("#inicio");
+        }}
+      >
+        Início
+      </a>
 
-<a
-  href="https://www.instagram.com/pontodeluzoficial0/"
-  target="_blank"
-  rel="noreferrer"
->
-  <FaInstagram size={28} />
-</a>
+      <a
+        href="#"
+        onClick={(e) => {
+          e.preventDefault();
+          scrollToSection("#albuns");
+        }}
+      >
+        Álbuns
+      </a>
 
-<a
-  href="SEU_LINK_FACEBOOK"
-  target="_blank"
-  rel="noreferrer"
->
-  <FaFacebook size={28} />
-</a>
+      <a
+        href="#"
+        onClick={(e) => {
+          e.preventDefault();
+          scrollToSection("#contato");
+        }}
+      >
+        Contato
+      </a>
+    </div>
+
+<div className="social-links">
+  <a
+    href="https://open.spotify.com/artist/69NroCfrP8Nm9CWMXVOHuc"
+    target="_blank"
+    rel="noreferrer"
+  >
+    <FaSpotify size={28} />
+  </a>
+
+  <a
+    href="https://www.instagram.com/pontodeluzoficial0/"
+    target="_blank"
+    rel="noreferrer"
+  >
+    <FaInstagram size={28} />
+  </a>
+
+  <a
+    href="https://facebook.com/pontodeluzoficial"
+    target="_blank"
+    rel="noreferrer"
+  >
+    <FaFacebook size={28} />
+  </a>
+</div>
   </div>
 </nav>
       <div id="inicio" className="hero">
