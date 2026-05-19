@@ -4,7 +4,6 @@ import vozNoSilencio from "./assets/voz-no-silencio.png";
 import aindaExisteLuz from "./assets/ainda-existe-luz.png";
 import depoisDaTempestade from "./assets/depois-da-tempestade.png";
 import heroImage from "./assets/hero-1.png";
-
 import {
   FaSpotify,
   FaInstagram,
@@ -12,8 +11,11 @@ import {
   FaBars,
   FaTimes,
 } from "react-icons/fa";
-
-import { motion } from "framer-motion";
+import {
+  motion,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 
 import Lenis from "@studio-freight/lenis";
 
@@ -22,6 +24,14 @@ function App() {
 
   const [scrolled, setScrolled] =
     useState(false);
+  const { scrollY } = useScroll();
+
+const heroY =
+  useTransform(
+    scrollY,
+    [0, 500],
+    [0, 150]
+  );
 
   const scrollToSection = (id) => {
     const element =
@@ -191,11 +201,15 @@ function App() {
         id="inicio"
         className="hero"
       >
-        <img
-          src={heroImage}
-          alt="Hero"
-          className="hero-image"
-        />
+<motion.img
+  src={heroImage}
+  alt="Hero"
+  className="hero-image"
+
+  style={{
+    y: heroY,
+  }}
+/>
 
         <div className="hero-overlay">
           <div className="hero-glow"></div>
