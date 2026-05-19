@@ -213,6 +213,16 @@ const heroY =
 
         <div className="hero-overlay">
           <div className="hero-glow"></div>
+          <div className="particles">
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
           <h1 className="title">
             Ponto de Luz Oficial
           </h1>
