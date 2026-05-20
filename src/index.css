@@ -452,6 +452,10 @@ linear-gradient(
 }
 
 .footer span {
+  display: block;
+
+  margin-top: 55px;
+
   color: #777;
 
   font-size: 0.9rem;
