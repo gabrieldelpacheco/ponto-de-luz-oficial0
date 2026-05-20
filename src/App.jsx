@@ -155,6 +155,8 @@ function App() {
           duration: 0.8,
         }}
       >
+
+         <div className="stars-background"></div>
         {/* NAVBAR */}
 
         <nav

@@ -12,7 +12,7 @@ html {
 }
 
 body {
-  background: #000;
+  background: transparent;
 
   font-family: Arial, sans-serif;
 
@@ -30,13 +30,13 @@ body {
 
   overflow-x: hidden;
 
-  background:
-  linear-gradient(
-    to bottom,
-    #000000,
-    #1a1200,
-    #3d2a00
-  );
+background:
+linear-gradient(
+  to bottom,
+  rgba(0,0,0,0.94),
+  rgba(26,18,0,0.92),
+  rgba(61,42,0,0.90)
+);
 
   animation:
     backgroundPulse 12s ease-in-out infinite;
@@ -1316,4 +1316,307 @@ img {
     max-width: 320px;
   }
 
+}
+
+/* FUNDO GALÁXIA */
+
+html {
+  background: #000;
+}
+
+body {
+  position: relative;
+
+  background: transparent;
+
+  overflow-x: hidden;
+}
+
+/* ESTRELAS */
+
+body::after {
+  content: "";
+
+  position: fixed;
+
+  inset: 0;
+
+  z-index: -1;
+
+  background-image:
+    radial-gradient(2px 2px at 20px 30px, rgba(255,255,255,0.8), transparent),
+    radial-gradient(1.5px 1.5px at 120px 80px, rgba(255,215,0,0.7), transparent),
+    radial-gradient(2px 2px at 220px 180px, rgba(255,255,255,0.6), transparent),
+    radial-gradient(1px 1px at 320px 120px, rgba(255,215,0,0.6), transparent),
+    radial-gradient(2px 2px at 420px 220px, rgba(255,255,255,0.5), transparent);
+
+  background-size: 500px 500px;
+
+  animation: starsMove 80s linear infinite;
+
+  opacity: 0.45;
+
+  pointer-events: none;
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+  body::after {
+    opacity: 0.25;
+
+    animation-duration: 120s;
+  }
+
+}
+
+/* STARS BACKGROUND */
+
+.stars-background {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 0;
+
+  pointer-events: none;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(circle at center, #120b00 0%, #000 100%);
+}
+
+/* NÉVOA GALÁCTICA */
+
+.stars-background::before {
+  content: "";
+
+  position: absolute;
+
+  inset: -20%;
+
+  background:
+
+    radial-gradient(
+      circle at 20% 30%,
+      rgba(255,215,0,0.22),
+      transparent 28%
+    ),
+
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(255,140,0,0.18),
+      transparent 25%
+    ),
+
+    radial-gradient(
+      circle at 50% 80%,
+      rgba(255,255,255,0.10),
+      transparent 35%
+    ),
+
+    radial-gradient(
+      circle at 70% 60%,
+      rgba(255,215,0,0.14),
+      transparent 30%
+    ),
+
+    radial-gradient(
+      circle at 40% 50%,
+      rgba(255,180,0,0.12),
+      transparent 40%
+    );
+
+  filter:
+    blur(90px);
+
+  animation:
+    galaxyPulse 18s ease-in-out infinite alternate;
+}
+
+/* ESTRELAS */
+
+.stars-background::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background-image:
+
+    radial-gradient(18px 18px at 40px 60px, rgba(255,255,255,1), transparent),
+    radial-gradient(16px 16px at 140px 120px, rgba(255,215,0,1), transparent),
+    radial-gradient(18px 18px at 260px 220px, rgba(255,255,255,1), transparent),
+    radial-gradient(16px 16px at 380px 160px, rgba(255,215,0,1), transparent),
+    radial-gradient(18px 18px at 500px 260px, rgba(255,255,255,1), transparent),
+    radial-gradient(16px 16px at 650px 120px, rgba(255,215,0,1), transparent),
+    radial-gradient(18px 18px at 820px 320px, rgba(255,255,255,1), transparent),
+    radial-gradient(16px 16px at 980px 180px, rgba(255,215,0,1), transparent),
+    radial-gradient(18px 18px at 1150px 420px, rgba(255,255,255,1), transparent),
+    radial-gradient(16px 16px at 1320px 300px, rgba(255,215,0,1), transparent),
+
+    radial-gradient(12px 12px at 150px 500px, rgba(255,255,255,0.95), transparent),
+    radial-gradient(13px 13px at 400px 700px, rgba(255,215,0,0.95), transparent),
+    radial-gradient(12px 12px at 700px 900px, rgba(255,255,255,0.95), transparent),
+    radial-gradient(13px 13px at 1000px 750px, rgba(255,215,0,0.95), transparent),
+    radial-gradient(12px 12px at 1300px 950px, rgba(255,255,255,0.95), transparent),
+
+    radial-gradient(10px 10px at 300px 300px, rgba(255,255,255,0.9), transparent),
+    radial-gradient(10px 10px at 600px 500px, rgba(255,215,0,0.9), transparent),
+    radial-gradient(10px 10px at 900px 650px, rgba(255,255,255,0.9), transparent),
+    radial-gradient(10px 10px at 1200px 850px, rgba(255,215,0,0.9), transparent),
+    radial-gradient(10px 10px at 1500px 1000px, rgba(255,255,255,0.9), transparent);
+
+  background-size: 2200px 2200px;
+
+  opacity: 1;
+
+  filter:
+    drop-shadow(0 0 18px rgba(255,255,255,1))
+    drop-shadow(0 0 45px rgba(255,215,0,1));
+
+  animation:
+    starsMove 18s linear infinite,
+    starsTwinkle 2s ease-in-out infinite alternate;
+}
+
+@keyframes starsTwinkle {
+
+  0% {
+    opacity: 0.75;
+  }
+
+  100% {
+    opacity: 1;
+  }
+
+}
+
+/* MOVIMENTO ESTRELAS */
+
+@keyframes starsMove {
+
+  from {
+    transform:
+      translateY(0);
+  }
+
+  to {
+    transform:
+      translateY(-800px);
+  }
+
+}
+
+/* RESPIRAÇÃO GALÁXIA */
+
+@keyframes galaxyPulse {
+
+  0% {
+    transform:
+      scale(1)
+      translateX(0px)
+      translateY(0px);
+
+    opacity: 0.85;
+  }
+
+  50% {
+    transform:
+      scale(1.08)
+      translateX(30px)
+      translateY(-20px);
+
+    opacity: 1;
+  }
+
+  100% {
+    transform:
+      scale(1.12)
+      translateX(-20px)
+      translateY(25px);
+
+    opacity: 0.9;
+  }
+
+}
+
+/* CONTEÚDO ACIMA */
+
+.page > *:not(.stars-background) {
+  position: relative;
+
+  z-index: 2;
+}
+
+/* GALÁXIA */
+
+.stars-background::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+
+    radial-gradient(circle at 20% 30%, rgba(255,215,0,0.08), transparent 25%),
+
+    radial-gradient(circle at 80% 20%, rgba(255,255,255,0.06), transparent 20%),
+
+    radial-gradient(circle at 50% 80%, rgba(255,215,0,0.05), transparent 30%),
+
+    radial-gradient(circle at 70% 60%, rgba(255,255,255,0.04), transparent 25%);
+}
+
+/* ESTRELAS */
+
+.stars-background::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background-image:
+
+    radial-gradient(2px 2px at 20px 30px, rgba(255,255,255,0.8), transparent),
+
+    radial-gradient(1.5px 1.5px at 120px 80px, rgba(255,215,0,0.7), transparent),
+
+    radial-gradient(2px 2px at 220px 180px, rgba(255,255,255,0.6), transparent),
+
+    radial-gradient(1px 1px at 320px 120px, rgba(255,215,0,0.6), transparent),
+
+    radial-gradient(2px 2px at 420px 220px, rgba(255,255,255,0.5), transparent);
+
+  background-size: 500px 500px;
+
+  opacity: 0.35;
+
+  animation:
+    starsMove 45s linear infinite;
+}
+
+@keyframes starsMove {
+
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-500px);
+  }
+
+}
+
+/* CONTEÚDO ACIMA DAS ESTRELAS */
+
+.page > *:not(.stars-background) {
+  position: relative;
+
+  z-index: 2;
 }
