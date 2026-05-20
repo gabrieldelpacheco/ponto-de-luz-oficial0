@@ -463,60 +463,22 @@ body {
 
   /* NAVBAR MOBILE */
 
-.navbar {
-  padding: 16px 20px;
-}
-
-.logo {
-  font-size: 2rem;
-
-  max-width: 75%;
-}
-
-.menu-icon {
-  margin-left: 18px;
-
-  font-size: 2.3rem;
-}
-
-/* HERO MOBILE */
-
-.hero {
-  height: 100vh;
-}
-
-/* APENAS HOME */
-
-.home-hero .hero-image {
-  object-fit: cover;
-
-  object-position: 72% center;
-}
-
-.title {
-  font-size: 4rem;
-
-  line-height: 1.1;
-}
-
-.subtitle {
-  font-size: 1.5rem;
-
-  line-height: 1.6;
-
-  max-width: 90%;
-}
-
-  .hero {
-    height: 70vh;
+  .navbar {
+    padding: 16px 20px;
   }
 
-  .navbar {
-    padding: 16px;
+  .logo {
+    font-size: 2rem;
+
+    max-width: 75%;
   }
 
   .menu-icon {
     display: block;
+
+    margin-left: 18px;
+
+    font-size: 2.3rem;
   }
 
   .nav-container {
@@ -557,27 +519,36 @@ body {
     justify-content: center;
   }
 
+  /* HERO HOME */
+
+  .hero {
+    height: 100vh;
+  }
+
+  .home-hero .hero-image {
+    object-fit: cover;
+
+    object-position: 72% center;
+  }
+
   .title {
-    font-size: 2.3rem;
+    font-size: 2.6rem;
+
+    line-height: 1.2;
   }
 
   .subtitle {
-    font-size: 1rem;
+    font-size: 1.1rem;
 
-    line-height: 1.6;
+    line-height: 1.7;
+
+    max-width: 90%;
   }
 
-  .album-grid {
-    padding: 40px 20px;
-  }
-
-  .album-title {
-    font-size: 1.5rem;
-  }
+  /* ABOUT */
 
   .about-card {
-    padding:
-      35px 25px;
+    padding: 35px 25px;
   }
 
   .about-title {
@@ -589,6 +560,42 @@ body {
 
     line-height: 1.8;
   }
+
+  /* ÁLBUNS */
+
+  .album-grid {
+    padding: 40px 20px;
+  }
+
+  .album-title {
+    font-size: 1.5rem;
+  }
+
+
+  .album-page-title {
+    font-size: 2.4rem;
+
+    line-height: 1.2;
+  }
+
+  .album-page-text {
+    font-size: 1rem;
+
+    line-height: 1.8;
+  }
+
+  .album-navigation {
+    flex-direction: column;
+
+    align-items: center;
+  }
+
+  .nav-album-button {
+    width: 100%;
+
+    max-width: 320px;
+  }
+
 }
 
 /* PARTICLES */
@@ -849,6 +856,75 @@ body {
   color: rgba(255,255,255,0.78);
 
   line-height: 1.6;
+}
+
+/* PÁGINAS DOS ÁLBUNS */
+
+.album-hero {
+  position: relative;
+
+  width: 100%;
+
+  background: #000;
+}
+
+.album-page-image {
+  width: 100%;
+
+  height: auto;
+
+  display: block;
+
+  object-fit: cover;
+}
+
+.album-overlay {
+  position: relative;
+
+  z-index: 2;
+
+  width: 100%;
+
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  padding: 120px 60px 80px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  gap: 25px;
+}
+
+.album-page-title {
+  font-size: 5rem;
+
+  color: white;
+
+  line-height: 1.1;
+
+  text-shadow:
+    0 0 25px rgba(0,0,0,0.7);
+}
+
+.album-page-text {
+  font-size: 1.4rem;
+
+  line-height: 1.9;
+
+  max-width: 720px;
+
+  color: rgba(255,255,255,0.92);
+}
+
+.spotify-embed {
+  width: 100%;
+
+  max-width: 900px;
 }
 
 /* RESPONSIVO */
@@ -1168,4 +1244,84 @@ img {
       #ffe45c,
       #ffc400
     );
+}
+
+/* MOBILE ÁLBUNS */
+
+@media (max-width: 768px) {
+
+  .album-hero {
+    min-height: auto;
+
+    height: auto;
+
+    overflow: visible;
+
+    padding-bottom: 40px;
+  }
+
+  .album-page-image {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position: center;
+  }
+
+@media (max-width: 768px) {
+
+  .album-overlay {
+    justify-content: flex-start;
+
+    padding: 90px 25px 40px;
+
+    gap: 18px;
+
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.55),
+        rgba(0,0,0,0.35),
+        rgba(0,0,0,0.65)
+      );
+  }
+
+}
+
+  .album-page-title {
+    font-size: 2.8rem;
+
+    line-height: 1.1;
+  }
+
+  .album-page-text {
+    font-size: 1.05rem;
+
+    line-height: 1.8;
+  }
+
+  .spotify-embed {
+    width: 100%;
+  }
+
+  .album-navigation {
+    width: 100%;
+
+    flex-direction: column;
+
+    align-items: center;
+  }
+
+  .nav-album-button {
+    width: 100%;
+
+    max-width: 320px;
+  }
+
 }
