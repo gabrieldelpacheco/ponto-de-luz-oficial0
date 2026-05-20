@@ -279,9 +279,9 @@ function App() {
         {/* HERO */}
 
         <div
-          id="inicio"
-          className="hero"
-        >
+  id="inicio"
+  className="hero home-hero"
+>
 
           <motion.img
             src={heroImage}
