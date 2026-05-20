@@ -24,7 +24,7 @@ import { Link } from "react-router-dom";
 
 function App() {
 
-    const [mousePosition, setMousePosition] =
+  const [mousePosition, setMousePosition] =
     useState({
       x: 0,
       y: 0,
@@ -75,6 +75,7 @@ function App() {
       });
 
     }
+
   };
 
   const { scrollY } = useScroll();
@@ -128,490 +129,498 @@ function App() {
 
   return (
 
-    <motion.div
-      className="page"
+    <>
 
-      initial={{
-        opacity: 0,
-      }}
+      <div
+        className="custom-cursor"
 
-      animate={{
-        opacity: 1,
-      }}
+        style={{
+          left: `${mousePosition.x}px`,
+          top: `${mousePosition.y}px`,
+        }}
+      ></div>
 
-      transition={{
-        duration: 0.8,
-      }}
-    >
+      <motion.div
+        className="page"
 
-        <div
-    className="custom-cursor"
+        initial={{
+          opacity: 0,
+        }}
 
-    style={{
-      left: mousePosition.x,
-      top: mousePosition.y,
-    }}
-  ></div>
+        animate={{
+          opacity: 1,
+        }}
 
-      {/* NAVBAR */}
-
-      <nav
-        className={
-          scrolled
-            ? "navbar navbar-scrolled"
-            : "navbar"
-        }
+        transition={{
+          duration: 0.8,
+        }}
       >
+        {/* NAVBAR */}
 
-        <div className="logo">
-          Ponto de Luz Oficial
-        </div>
-
-        <div
-          className="menu-icon"
-
-          onClick={() =>
-            setMenuOpen(!menuOpen)
-          }
-        >
-
-          {menuOpen
-            ? <FaTimes />
-            : <FaBars />
-          }
-
-        </div>
-
-        <div
+        <nav
           className={
-            menuOpen
-              ? "nav-container active"
-              : "nav-container"
+            scrolled
+              ? "navbar navbar-scrolled"
+              : "navbar"
           }
         >
 
-          <div className="nav-links">
+          <div className="logo">
+            Ponto de Luz Oficial
+          </div>
 
-            <a
-              href="#"
+          <div
+            className="menu-icon"
 
-              onClick={(e) => {
+            onClick={() =>
+              setMenuOpen(!menuOpen)
+            }
+          >
 
-                e.preventDefault();
-
-                scrollToSection(
-                  "#inicio"
-                );
-
-              }}
-            >
-              Início
-            </a>
-
-            <a
-              href="#"
-
-              onClick={(e) => {
-
-                e.preventDefault();
-
-                scrollToSection(
-                  "#albuns"
-                );
-
-              }}
-            >
-              Álbuns
-            </a>
-
-            <a
-              href="#"
-
-              onClick={(e) => {
-
-                e.preventDefault();
-
-                scrollToSection(
-                  "#contato"
-                );
-
-              }}
-            >
-              Contato
-            </a>
+            {menuOpen
+              ? <FaTimes />
+              : <FaBars />
+            }
 
           </div>
 
-          <div className="social-links">
+          <div
+            className={
+              menuOpen
+                ? "nav-container active"
+                : "nav-container"
+            }
+          >
+
+            <div className="nav-links">
+
+              <a
+                href="#"
+
+                onClick={(e) => {
+
+                  e.preventDefault();
+
+                  scrollToSection(
+                    "#inicio"
+                  );
+
+                }}
+              >
+                Início
+              </a>
+
+              <a
+                href="#"
+
+                onClick={(e) => {
+
+                  e.preventDefault();
+
+                  scrollToSection(
+                    "#albuns"
+                  );
+
+                }}
+              >
+                Álbuns
+              </a>
+
+              <a
+                href="#"
+
+                onClick={(e) => {
+
+                  e.preventDefault();
+
+                  scrollToSection(
+                    "#contato"
+                  );
+
+                }}
+              >
+                Contato
+              </a>
+
+            </div>
+
+            <div className="social-links">
+
+              <a
+                href="https://open.spotify.com/artist/69NroCfrP8Nm9CWMXVOHuc"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <FaSpotify size={28} />
+              </a>
+
+              <a
+                href="https://www.instagram.com/pontodeluzoficial0/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <FaInstagram size={28} />
+              </a>
+
+              <a
+                href="https://facebook.com/pontodeluzoficial"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <FaFacebook size={28} />
+              </a>
+
+            </div>
+
+          </div>
+
+        </nav>
+
+        {/* HERO */}
+
+        <div
+          id="inicio"
+          className="hero"
+        >
+
+          <motion.img
+            src={heroImage}
+            alt="Hero"
+
+            className="hero-image"
+
+            style={{
+              y: heroY,
+            }}
+          />
+
+          <div className="hero-overlay">
+
+            <div className="aurora"></div>
+
+            <div className="particles">
+
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+
+            </div>
+
+            <h1 className="title">
+              Ponto de Luz Oficial
+            </h1>
+
+            <p className="subtitle">
+              Canções que iluminam a
+              escuridão,
+              <br />
+              tocam a alma e transformam
+              silêncio em esperança ✨
+            </p>
+
+          </div>
+
+        </div>
+
+        {/* SPOTIFY */}
+
+        <motion.section
+          className="spotify-section"
+
+          initial={{
+            opacity: 0,
+            y: 80,
+          }}
+
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+
+          transition={{
+            duration: 1,
+          }}
+
+          viewport={{
+            once: true,
+          }}
+        >
+
+          <h2 className="spotify-title">
+            Ouça no Spotify 🎵
+          </h2>
+
+          <p className="spotify-text">
+            Escute os lançamentos
+            oficiais do Ponto de Luz Oficial
+          </p>
+
+          <iframe
+            data-testid="embed-iframe"
+
+            style={{
+              borderRadius: "16px",
+            }}
+
+            src="https://open.spotify.com/embed/artist/69NroCfrP8Nm9CWMXVOHuc?utm_source=generator"
+
+            width="100%"
+
+            height="352"
+
+            frameBorder="0"
+
+            allowFullScreen=""
+
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+
+            loading="lazy"
+          ></iframe>
+
+        </motion.section>
+
+        {/* SOBRE */}
+
+        <motion.section
+          className="about-section"
+
+          initial={{
+            opacity: 0,
+            y: 80,
+          }}
+
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+
+          transition={{
+            duration: 1,
+          }}
+
+          viewport={{
+            once: true,
+          }}
+        >
+
+          <div className="about-card">
+
+            <h2 className="about-title">
+              Sobre o Projeto ✨
+            </h2>
+
+            <p className="about-text">
+
+              Ponto de Luz Oficial nasceu
+              para transformar silêncio em
+              esperança através da música.
+
+              <br />
+              <br />
+
+              Cada canção carrega emoção,
+              fé, dor, cura e luz,
+              conectando almas através de
+              melodias que acolhem,
+              inspiram e iluminam.
+
+              <br />
+              <br />
+
+              Mais do que músicas,
+              este projeto é um refúgio
+              para quem busca força,
+              paz e esperança em meio
+              à escuridão.
+
+            </p>
+
+          </div>
+
+        </motion.section>
+
+        {/* ÁLBUNS */}
+
+        <div
+          id="albuns"
+          className="album-grid"
+        >
+
+          {albums.map(
+            (album, index) => (
+
+              <motion.div
+                key={index}
+
+                className="card"
+
+                initial={{
+                  opacity: 0,
+                  y: 80,
+                }}
+
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
+
+                transition={{
+                  duration: 0.8,
+                  delay: index * 0.2,
+                }}
+
+                viewport={{
+                  once: true,
+                }}
+              >
+
+                <img
+                  src={album.image}
+                  alt={album.title}
+
+                  className="album-image"
+                />
+
+                <h2 className="album-title">
+                  {album.title}
+                </h2>
+
+                <Link
+                  to={
+                    index === 0
+                      ? "/voz-no-silencio"
+                      : index === 1
+                      ? "/ainda-existe-luz"
+                      : "/depois-da-tempestade"
+                  }
+
+                  className="button"
+                >
+                  Explorar
+                </Link>
+
+              </motion.div>
+
+            )
+          )}
+
+        </div>
+
+        {/* FOOTER */}
+
+        <motion.footer
+          className="footer"
+          id="contato"
+
+          initial={{
+            opacity: 0,
+            y: 80,
+          }}
+
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+
+          transition={{
+            duration: 1,
+          }}
+
+          viewport={{
+            once: true,
+          }}
+        >
+
+          <h2>
+            Ponto de Luz Oficial
+          </h2>
+
+          <p>
+            Uma voz, uma mensagem,
+            um ponto de luz ✨
+          </p>
+
+          <div className="contact-grid">
 
             <a
               href="https://open.spotify.com/artist/69NroCfrP8Nm9CWMXVOHuc"
               target="_blank"
               rel="noreferrer"
+              className="contact-card"
             >
-              <FaSpotify size={28} />
+              <FaSpotify size={40} />
+
+              <h3>Spotify</h3>
+
+              <p>
+                Ouça os lançamentos oficiais
+              </p>
             </a>
 
             <a
               href="https://www.instagram.com/pontodeluzoficial0/"
               target="_blank"
               rel="noreferrer"
+              className="contact-card"
             >
-              <FaInstagram size={28} />
+              <FaInstagram size={40} />
+
+              <h3>Instagram</h3>
+
+              <p>
+                Acompanhe novidades
+                e conteúdos
+              </p>
             </a>
 
             <a
               href="https://facebook.com/pontodeluzoficial"
               target="_blank"
               rel="noreferrer"
+              className="contact-card"
             >
-              <FaFacebook size={28} />
+              <FaFacebook size={40} />
+
+              <h3>Facebook</h3>
+
+              <p>
+                Conecte-se com o projeto
+              </p>
+            </a>
+
+            <a
+              href="mailto:pontodeluzoficial0@gmail.com"
+              className="contact-card"
+            >
+              <FaEnvelope size={40} />
+
+              <h3>Email</h3>
+
+              <p>
+                Entre em contato
+                profissionalmente
+              </p>
             </a>
 
           </div>
 
-        </div>
+          <span>
+            © 2026 Ponto de Luz Oficial
+          </span>
 
-      </nav>
+        </motion.footer>
 
-      {/* HERO */}
+      </motion.div>
 
-      <div
-        id="inicio"
-        className="hero"
-      >
-
-        <motion.img
-          src={heroImage}
-          alt="Hero"
-
-          className="hero-image"
-
-          style={{
-            y: heroY,
-          }}
-        />
-
-        <div className="hero-overlay">
-<div className="aurora"></div>
-          <div className="particles">
-
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-
-          </div>
-
-          <h1 className="title">
-            Ponto de Luz Oficial
-          </h1>
-
-          <p className="subtitle">
-            Canções que iluminam a
-            escuridão,
-            <br />
-            tocam a alma e transformam
-            silêncio em esperança ✨
-          </p>
-
-        </div>
-
-      </div>
-
-      {/* SPOTIFY */}
-
-      <motion.section
-        className="spotify-section"
-
-        initial={{
-          opacity: 0,
-          y: 80,
-        }}
-
-        whileInView={{
-          opacity: 1,
-          y: 0,
-        }}
-
-        transition={{
-          duration: 1,
-        }}
-
-        viewport={{
-          once: true,
-        }}
-      >
-
-        <h2 className="spotify-title">
-          Ouça no Spotify 🎵
-        </h2>
-
-        <p className="spotify-text">
-          Escute os lançamentos
-          oficiais do Ponto de Luz Oficial
-        </p>
-
-        <iframe
-          data-testid="embed-iframe"
-
-          style={{
-            borderRadius: "16px",
-          }}
-
-          src="https://open.spotify.com/embed/artist/69NroCfrP8Nm9CWMXVOHuc?utm_source=generator"
-
-          width="100%"
-
-          height="352"
-
-          frameBorder="0"
-
-          allowFullScreen=""
-
-          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-
-          loading="lazy"
-        ></iframe>
-
-      </motion.section>
-
-      {/* SOBRE */}
-
-      <motion.section
-        className="about-section"
-
-        initial={{
-          opacity: 0,
-          y: 80,
-        }}
-
-        whileInView={{
-          opacity: 1,
-          y: 0,
-        }}
-
-        transition={{
-          duration: 1,
-        }}
-
-        viewport={{
-          once: true,
-        }}
-      >
-
-        <div className="about-card">
-
-          <h2 className="about-title">
-            Sobre o Projeto ✨
-          </h2>
-
-          <p className="about-text">
-
-            Ponto de Luz Oficial nasceu
-            para transformar silêncio em
-            esperança através da música.
-
-            <br />
-            <br />
-
-            Cada canção carrega emoção,
-            fé, dor, cura e luz,
-            conectando almas através de
-            melodias que acolhem,
-            inspiram e iluminam.
-
-            <br />
-            <br />
-
-            Mais do que músicas,
-            este projeto é um refúgio
-            para quem busca força,
-            paz e esperança em meio
-            à escuridão.
-
-          </p>
-
-        </div>
-
-      </motion.section>
-
-      {/* ÁLBUNS */}
-
-      <div
-        id="albuns"
-        className="album-grid"
-      >
-
-        {albums.map(
-          (album, index) => (
-
-            <motion.div
-              key={index}
-
-              className="card"
-
-              initial={{
-                opacity: 0,
-                y: 80,
-              }}
-
-              whileInView={{
-                opacity: 1,
-                y: 0,
-              }}
-
-              transition={{
-                duration: 0.8,
-                delay: index * 0.2,
-              }}
-
-              viewport={{
-                once: true,
-              }}
-            >
-
-              <img
-                src={album.image}
-                alt={album.title}
-
-                className="album-image"
-              />
-
-              <h2 className="album-title">
-                {album.title}
-              </h2>
-
-              <Link
-                to={
-                  index === 0
-                    ? "/voz-no-silencio"
-                    : index === 1
-                    ? "/ainda-existe-luz"
-                    : "/depois-da-tempestade"
-                }
-
-                className="button"
-              >
-                Explorar
-              </Link>
-
-            </motion.div>
-
-          )
-        )}
-
-      </div>
-
-      {/* FOOTER */}
-
-      <motion.footer
-        className="footer"
-        id="contato"
-
-        initial={{
-          opacity: 0,
-          y: 80,
-        }}
-
-        whileInView={{
-          opacity: 1,
-          y: 0,
-        }}
-
-        transition={{
-          duration: 1,
-        }}
-
-        viewport={{
-          once: true,
-        }}
-      >
-
-        <h2>
-          Ponto de Luz Oficial
-        </h2>
-
-        <p>
-          Uma voz, uma mensagem,
-          um ponto de luz ✨
-        </p>
-<div className="contact-grid">
-
-  <a
-    href="https://open.spotify.com/artist/69NroCfrP8Nm9CWMXVOHuc"
-    target="_blank"
-    rel="noreferrer"
-    className="contact-card"
-  >
-    <FaSpotify size={40} />
-
-    <h3>Spotify</h3>
-
-    <p>
-      Ouça os lançamentos oficiais
-    </p>
-  </a>
-
-  <a
-    href="https://www.instagram.com/pontodeluzoficial0/"
-    target="_blank"
-    rel="noreferrer"
-    className="contact-card"
-  >
-    <FaInstagram size={40} />
-
-    <h3>Instagram</h3>
-
-    <p>
-      Acompanhe novidades
-      e conteúdos
-    </p>
-  </a>
-
-  <a
-    href="https://facebook.com/pontodeluzoficial"
-    target="_blank"
-    rel="noreferrer"
-    className="contact-card"
-  >
-    <FaFacebook size={40} />
-
-    <h3>Facebook</h3>
-
-    <p>
-      Conecte-se com o projeto
-    </p>
-  </a>
-
-  <a
-    href="mailto:pontodeluzoficial0@gmail.com"
-    className="contact-card"
-  >
-    <FaEnvelope size={40} />
-
-    <h3>Email</h3>
-
-    <p>
-      Entre em contato
-      profissionalmente
-    </p>
-  </a>
-
-</div>
-        <span>
-          © 2026 Ponto de Luz Oficial
-        </span>
-
-      </motion.footer>
-
-    </motion.div>
+    </>
 
   );
+
 }
 
 export default App;
