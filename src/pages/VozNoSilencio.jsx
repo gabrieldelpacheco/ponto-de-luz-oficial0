@@ -13,7 +13,7 @@ import {
 } from "react-router-dom";
 
 import { motion } from "framer-motion";
-
+import OtherPlatformsButton from "../components/OtherPlatformsButton";
 import vozNoSilencio from "../assets/voz-no-silencio.png";
 
 function VozNoSilencio() {
@@ -126,18 +126,22 @@ function VozNoSilencio() {
 
             </p>
 
-            <a
-              href="https://open.spotify.com/artist/69NroCfrP8Nm9CWMXVOHuc"
-              target="_blank"
-              rel="noreferrer"
-              className="album-page-button"
-            >
+<a
+  href="https://open.spotify.com/artist/69NroCfrP8Nm9CWMXVOHuc"
+  target="_blank"
+  rel="noreferrer"
+  className="album-page-button"
+>
 
-              <FaSpotify />
+  <FaSpotify />
 
-              Ouvir Agora
+  Ouvir Agora
 
-            </a>
+</a>
+
+<OtherPlatformsButton
+  link="https://somvibe.lnk.to/ab35037"
+/>
 
             <div className="spotify-embed">
 

@@ -13,7 +13,7 @@ import {
 } from "react-router-dom";
 
 import { motion } from "framer-motion";
-
+import OtherPlatformsButton from "../components/OtherPlatformsButton";
 import aindaExisteLuz from "../assets/ainda-existe-luz.png";
 
 function AindaExisteLuz() {
@@ -124,18 +124,22 @@ function AindaExisteLuz() {
 
             </p>
 
-            <a
-              href="https://somvibe.lnk.to/ab34686"
-              target="_blank"
-              rel="noreferrer"
-              className="album-page-button"
-            >
+<a
+  href="https://somvibe.lnk.to/ab34686"
+  target="_blank"
+  rel="noreferrer"
+  className="album-page-button"
+>
 
-              <FaSpotify />
+  <FaSpotify />
 
-              Ouvir Agora
+  Ouvir Agora
 
-            </a>
+</a>
+
+<OtherPlatformsButton
+  link="https://somvibe.lnk.to/ab34686"
+/>
 
             <div className="spotify-embed">
 

@@ -13,7 +13,7 @@ import {
 } from "react-router-dom";
 
 import { motion } from "framer-motion";
-
+import OtherPlatformsButton from "../components/OtherPlatformsButton";
 import depoisDaTempestade from "../assets/depois-da-tempestade.png";
 
 function DepoisDaTempestade() {
@@ -124,18 +124,22 @@ function DepoisDaTempestade() {
 
             </p>
 
-            <a
-              href="https://open.spotify.com/artist/69NroCfrP8Nm9CWMXVOHuc"
-              target="_blank"
-              rel="noreferrer"
-              className="album-page-button"
-            >
+<a
+  href="https://open.spotify.com/artist/69NroCfrP8Nm9CWMXVOHuc"
+  target="_blank"
+  rel="noreferrer"
+  className="album-page-button"
+>
 
-              <FaSpotify />
+  <FaSpotify />
 
-              Ouvir Agora
+  Ouvir Agora
 
-            </a>
+</a>
+
+<OtherPlatformsButton
+  link="https://somvibe.lnk.to/AZuXkCBd"
+/>
 
             <div className="spotify-embed">
 
